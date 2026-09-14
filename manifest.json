@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Webサカ Model Helper",
+  "version": "1.0.0",
+  "description": "Webサカのモデル選手名を実在選手名で表示します。",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.yahoo-mbga.jp/*",
+    "https://*.mbga.jp/*",
+    "https://websaka.jp/*",
+    "https://*.websaka.jp/*",
+    "https://websaka2.jp/*",
+    "https://*.websaka2.jp/*",
+    "https://*.app.mbga-platform.jp/*"
+  ],
+  "action": {
+    "default_title": "Webサカ Model Helper",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.yahoo-mbga.jp/*",
+        "https://*.mbga.jp/*",
+        "https://websaka.jp/*",
+        "https://*.websaka.jp/*",
+        "https://websaka2.jp/*",
+        "https://*.websaka2.jp/*",
+        "https://*.app.mbga-platform.jp/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
+    }
+  ]
+}

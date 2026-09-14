@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Webサカ Model Helper</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      width: 390px;
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #101820;
+      color: #eef7fb;
+    }
+    h1 { font-size: 16px; margin: 0 0 4px; }
+    h2 { font-size: 13px; margin: 18px 0 8px; color: #d7ecf6; }
+    .subtitle { font-size: 12px; color: #9fb2bd; margin-bottom: 14px; }
+    .note {
+      margin: 8px 0 0;
+      font-size: 11px;
+      line-height: 1.55;
+      color: #9fb2bd;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 10px 0;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    input { accent-color: #0067c0; }
+    button {
+      width: 100%;
+      margin-top: 9px;
+      border: 0;
+      border-radius: 7px;
+      padding: 9px 10px;
+      background: #0067c0;
+      color: #09202c;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: #223746;
+      color: #dff6ff;
+      border: 1px solid #355366;
+    }
+    button:disabled { opacity: 0.5; cursor: default; }
+    #status, #diagStatus {
+      min-height: 18px;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #9fb2bd;
+    }
+    textarea {
+      width: 100%;
+      height: 190px;
+      resize: vertical;
+      margin-top: 8px;
+      padding: 8px;
+      border: 1px solid #355366;
+      border-radius: 6px;
+      background: #091117;
+      color: #dff6ff;
+      font: 11px/1.45 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .divider {
+      height: 1px;
+      margin: 16px -16px 0;
+      background: #263b48;
+    }
+    code { color: #0067c0; }
+  </style>
+</head>
+<body>
+  <h1>Webサカ Model Helper</h1>
+  <div class="subtitle">Version 1.0.0</div>
+
+  <label>
+    <input id="enabled" type="checkbox" />
+    モデル選手名を実在名で表示（自動コントラスト）
+  </label>
+
+
+  <button id="rescan" type="button">この画面を再スキャン</button>
+  <div id="status"></div>
+
+  <div class="divider"></div>
+
+  <h2>画面診断</h2>
+  <div class="note">
+    Cookie・localStorage・入力値は取得しません。Yahoo!モバゲー内のゲームiframeも診断します。URLの <code>?...</code> と <code>#...</code> も除去します。
+    画面上の選手名・チーム名などは候補として含まれることがあるので、コピー前に内容を確認してください。
+  </div>
+
+  <button id="diagnose" type="button">WEBサカ画面を診断する</button>
+  <button id="copyDiagnostic" class="secondary" type="button" disabled>診断結果をコピー</button>
+  <div id="diagStatus"></div>
+  <textarea id="diagnosticOutput" readonly placeholder="ここに診断結果が表示されます。"></textarea>
+  <script src="popup.js"></script>
+</body>
+</html>
