@@ -1,1 +1,1 @@
-.ws-model-replaced{color:#0067c0!important;font-weight:700}.ws-model-replaced.ws-model-on-dark{color:#e6f9ff!important}.ws-model-replaced:hover{color:#004a8f!important}.ws-model-replaced.ws-model-on-dark:hover{color:#fff!important}
+.ws-model-replaced{color:var(--ws-model-name-color, #0067c0)!important;font-weight:700}.ws-model-replaced.ws-model-on-dark{color:var(--ws-model-name-color, #e6f9ff)!important}

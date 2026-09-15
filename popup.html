@@ -15,7 +15,7 @@
       color: #eef7fb;
     }
     h1 { font-size: 16px; margin: 0 0 4px; }
-    h2 { font-size: 13px; margin: 18px 0 8px; color: #d7ecf6; }
+    h2 { font-size: 13px; margin: 16px 0 8px; color: #d7ecf6; }
     .subtitle { font-size: 12px; color: #9fb2bd; margin-bottom: 14px; }
     .note {
       margin: 8px 0 0;
@@ -23,7 +23,7 @@
       line-height: 1.55;
       color: #9fb2bd;
     }
-    label {
+    .toggle-row {
       display: flex;
       align-items: center;
       gap: 9px;
@@ -32,6 +32,32 @@
       cursor: pointer;
     }
     input { accent-color: #0067c0; }
+    fieldset {
+      margin: 16px 0 0;
+      padding: 10px 12px 12px;
+      border: 1px solid #355366;
+      border-radius: 6px;
+    }
+    legend { padding: 0 5px; font-size: 13px; color: #d7ecf6; }
+    .color-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 10px;
+      min-height: 36px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    input[type="color"] {
+      width: 34px;
+      height: 28px;
+      padding: 1px;
+      border: 1px solid #526d7e;
+      border-radius: 4px;
+      background: #091117;
+      cursor: pointer;
+    }
+    output { width: 56px; color: #9fb2bd; font: 11px ui-monospace, monospace; }
     button {
       width: 100%;
       margin-top: 9px;
@@ -49,7 +75,7 @@
       border: 1px solid #355366;
     }
     button:disabled { opacity: 0.5; cursor: default; }
-    #status, #diagStatus {
+    #settingsStatus, #devStatus, #diagStatus {
       min-height: 18px;
       margin-top: 8px;
       font-size: 12px;
@@ -77,29 +103,28 @@
 </head>
 <body>
   <h1>Webサカ Model Helper</h1>
-  <div class="subtitle">Version 1.0.0</div>
+  <div class="subtitle">Version 1.1.0</div>
 
-  <label>
+  <label class="toggle-row">
     <input id="enabled" type="checkbox" />
     モデル選手名を実在名で表示（自動コントラスト）
   </label>
 
-
-  <button id="rescan" type="button">この画面を再スキャン</button>
-  <div id="status"></div>
-
-  <div class="divider"></div>
-
-  <h2>画面診断</h2>
-  <div class="note">
-    Cookie・localStorage・入力値は取得しません。Yahoo!モバゲー内のゲームiframeも診断します。URLの <code>?...</code> と <code>#...</code> も除去します。
-    画面上の選手名・チーム名などは候補として含まれることがあるので、コピー前に内容を確認してください。
-  </div>
-
-  <button id="diagnose" type="button">WEBサカ画面を診断する</button>
-  <button id="copyDiagnostic" class="secondary" type="button" disabled>診断結果をコピー</button>
-  <div id="diagStatus"></div>
-  <textarea id="diagnosticOutput" readonly placeholder="ここに診断結果が表示されます。"></textarea>
+  <fieldset>
+    <legend>選手名の色設定</legend>
+    <label class="color-row" for="lightBgNameColor">
+      <span>明るい背景</span>
+      <input id="lightBgNameColor" type="color" />
+      <output id="lightBgNameColorValue" for="lightBgNameColor"></output>
+    </label>
+    <label class="color-row" for="darkBgNameColor">
+      <span>暗い背景</span>
+      <input id="darkBgNameColor" type="color" />
+      <output id="darkBgNameColorValue" for="darkBgNameColor"></output>
+    </label>
+    <button id="resetColors" class="secondary" type="button">色を初期値に戻す</button>
+  </fieldset>
+  <div id="settingsStatus" role="status"></div>
   <script src="popup.js"></script>
 </body>
 </html>

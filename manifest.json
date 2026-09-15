@@ -1,12 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Webサカ Model Helper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Webサカのモデル選手名を実在選手名で表示します。",
   "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
+    "storage"
   ],
   "host_permissions": [
     "https://*.yahoo-mbga.jp/*",
